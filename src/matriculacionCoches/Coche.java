@@ -14,12 +14,7 @@ public class Coche {
 		this.gama="";
 		this.precio=0;
 	}
-
-	public String getMatricula() {
-		return matricula;
-	}
-
-	public boolean setMatricula(String matricula) {
+	public static boolean validarMatricula(String matricula) {
 		if(matricula.isEmpty())
 			return false;
 		if(matricula.length()!=7)
@@ -30,6 +25,15 @@ public class Coche {
 		for(int i=4;i<7;i++) {
 			if(!Character.isLetter(matricula.charAt(i))) return false;
 		}
+		return true;
+	}
+	public String getMatricula() {
+		return matricula;
+	}
+
+	public boolean setMatricula(String matricula) {
+		if(!validarMatricula(matricula))
+			return false;
 		this.matricula = matricula;
 		return true;
 	}
